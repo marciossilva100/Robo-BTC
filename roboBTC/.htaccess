@@ -1,0 +1,13 @@
+php_value session.gc_maxlifetime 172800
+php_value session.cookie_lifetime 172800
+php_value display_errors off
+php_flag magic_quotes 1
+php_flag magic_quotes_gpc 1
+php_value mbstring.http_input auto
+php_value date.timezone America/New_York
+<ifModule mod_headers.c>
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Expose-Headers "X-WP-Contentools"
+Header set X-Frame-Options "http://go.contentools.com/"
+Header set X-WP-Contentools "true"
+</ifModule>
