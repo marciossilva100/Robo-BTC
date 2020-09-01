@@ -57,39 +57,6 @@ class Operacao{
 	}
 
 
-	// public function calculaTempo($hora_inicial, $hora_final) {
-	//  $i = 1;
-	//  $tempo_total;
-
-	//  $tempos = array($hora_final, $hora_inicial);
-
-	//  foreach($tempos as $tempo) {
-	//   $segundos = 0;
-
-	//   list($h, $m, $s) = explode(':', $tempo);
-
-	//   $segundos += $h * 3600;
-	//   $segundos += $m * 60;
-	//   $segundos += $s;
-
-	//   $tempo_total[$i] = $segundos;
-
-	//   $i++;
-	//  }
-	//  $segundos = $tempo_total[1] - $tempo_total[2];
-
-	//  $horas = floor($segundos / 3600);
-	//  $segundos -= $horas * 3600;
-	//  $minutos = str_pad((floor($segundos / 60)), 2, '0', STR_PAD_LEFT);
-	//  $segundos -= $minutos * 60;
-	//  $segundos = str_pad($segundos, 2, '0', STR_PAD_LEFT);
-
-	// $horasFull  = $horas.":".$minutos.":".$segundos;
-
-	//  return $horasFull;
-	// }
-
-
 	public function getTwoTransactions($id_cliente){
 		$conn = new Conexao;
 		$conn = $conn->getConexao();
@@ -234,42 +201,6 @@ class Operacao{
 	}
 
 
-
-
-	// public function getSaldo(){
-
-	// 	$request_body['timestamp'] = time();
-
-	// 	$action = 'balance';
-	// 	$request_body['timestamp'] = time();
-	// 	$request_body = http_build_query($request_body);
-
-	// 	$api_post['api_key'] = $api_key;
-	// 	$api_post['request_body'] = $request_body;
-	// 	$api_post['signature'] = hash_hmac('sha256', $request_body, $api_secret);
-
-
-	// 	$ch = curl_init();
-	// 	curl_setopt($ch, CURLOPT_URL, 'https://bitnuvem.com/tapi/'.$action);
-	// 	curl_setopt($ch, CURLOPT_POST, true);
-	// 	curl_setopt($ch, CURLOPT_POSTFIELDS, $api_post);
-	// 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-	// 	$result = curl_exec($ch);
-
-	// 	$ultimaOrdem =  json_decode($result,true);
-
-	// 	$saldo = $ultimaOrdem['total'];
-	// 	$real =  $saldo['REAL'];
-	// 	// $saldoBTC  =  $saldo['BTC'];
-
-	// 	return compact('real');
-	// }
-
-
-
-
-
 	public function updateOP($show,$ativo,$criterio){
 		$conn = new Conexao;
 		$conn = $conn->getConexao();
@@ -283,6 +214,7 @@ class Operacao{
 		$query -> execute();
 	}
 
+	// INSERE AS OPERACOES NO BANCO DE DADOS
 	public function insertOP($precoAtual,$preco_calculado,$criterioB,$saldo,$saldoAtual,$valor_mercado,$id_cliente){
 		$conn = new Conexao;
 		$conn = $conn->getConexao();
@@ -375,6 +307,7 @@ class Operacao{
 
 	}
 
+	// CANCELA AS ORDENS
 	public function CancelarOrdem($precoAtual,$criterioB,$saldo,$id_cliente){
 		$conn = new Conexao;
 		$conn = $conn->getConexao();
@@ -402,7 +335,7 @@ class Operacao{
 
 	}
 
-
+	// GUARDA NO BANCO TODOS OS LOGS
 	public function log($cod,$criterio,$id_cliente){
 		$conn = new Conexao;
 		$conn = $conn->getConexao();
@@ -424,6 +357,7 @@ class Operacao{
 
 	}
 
+	// AQUI ONDE A GRAÇA ACONTECE
 	public function efetuarTransacao($precoAtual,$melhorPreco,$criterioB,$preco_calculado,$saldoREAL,$saldoBTC,$valor_mercado,$oco,$api_key,$api_secret,$id_cliente,$precoAtualBug){
 
 

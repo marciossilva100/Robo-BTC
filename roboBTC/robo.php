@@ -23,10 +23,6 @@ $api_secret = $_POST['api_secret'];
 $ativo = $_POST['ativo'];
 $id_cliente = $_POST['id_cliente'];
 
-// $api_key = '53d5d9d985a9d1c2adae7a792a18dd6a';
-// $api_secret = 'JnNPWu62taULIUcc9uxss5PQTMT0Xs19';
-// $ativo = $_POST['ativo'];
-// $id_cliente = $_POST['id_cliente'];
 
 	$compraBug = $op->getCompraBugada($id_cliente,1);
 	$tblCompraBug = $compraBug->fetch(PDO::FETCH_OBJ);
@@ -64,10 +60,6 @@ while($twoTbl = $lastTwoTransc->fetch(PDO::FETCH_OBJ)){
 		break;
 	endif;
 }
-
-
-
-
 
 
 // PEGA O SALDO EM BR E BITCOIN
@@ -132,8 +124,6 @@ endif;
 // if( $saldoREAL > 0 || $saldoBTC > 0 ):
 
 $percentual_dia = $op->getPorcentagem($id_cliente,$saldoREAL);
-// $dif_hora_compra = strtotime($valorHoraBug);
-// $dif_hora_compra_now = strtotime($dateNow);
 
 if($percentual_dia > 1 && !empty($percentual_dia)):
 	$stopSuccess = 1;
@@ -218,16 +208,7 @@ if( $ativo > 0 && isset($id_cliente) && strtotime($dateLimit2) >  strtotime($dat
 		$listaOpCancele = $ordemCancele->fetch(PDO::FETCH_OBJ);
 		$criterioCancele = $listaOpCancele->criterio;
 		$OrdemCancelePreco = $listaOpCancele->preco_atual;
-		// $valorUltimaCompra = $listaOp->preco_atual;
-		// else:
-		// 	$lastOrdem =  $teste[0]['price'];
-		// endif;
-
-		// $ordemCompra = $op->getCompra();
-		// $ultimaCompra = $ordemCompra->fetch(PDO::FETCH_OBJ);
-		// $valorUltimaCompra = $ultimaCompra->preco_atual;
-
-
+		
 
 		// PEGA O LIVRO DE OFERTAS
 		$action = 'orderbook';
@@ -356,14 +337,7 @@ $insertVariacao = $op->insertVariacao($preco_atual);
 									// $msg .= print_r($volumeArray,true).'<br>';
 									// $msg .= $volumeBitcoin;
 									$dia = date('D');
-									// $msg .= $dia;
-
-
-									// if($totalOrdens > 4  && $dia != 'Sun'):
-										// $volumeBTC = 0.22222222;	
-									// elseif($totalOrdens > 4 && $dia == 'Sun'):
-										// $volumeBTC = 0.44444444;	
-									// endif;
+									
 
 									$msg .= '<div class="alert alert-warning text-center" role="alert">Volume atual em bitcoin: ' . $volumeBitcoin .'</div>';
 
@@ -396,7 +370,8 @@ $insertVariacao = $op->insertVariacao($preco_atual);
 					endif;		
 								
 					// endif;			
-
+				
+					// REALIZA UM STOP 
 				elseif( $stop >= 320 && $stop <= 650  && $calculoBuyStop  <= 20 ):
 						$msg   = '<div class="alert alert-danger text-center" role="alert">Melhor stop loss de venda: ' . $preco_atual . '</div>';
 						 $msg .='<div class="alert alert-primary text-center" role="alert">Ultima ordem: ' . $lastOrdem.'</div>';
@@ -492,29 +467,12 @@ $insertVariacao = $op->insertVariacao($preco_atual);
 					endif;
 
 				endif;
-				// $msg .= filesize("robo.php").'<br>';
-
-				// $msg .= filesize("robo.php");
+		
 
 					echo json_encode(compact('msg','preco_atual','saldoDIp','saldoREAL','dateLimit','ativo'));
 
 
-					
-				// else:
-				// 	$msg = 'Sem negociações no momento!' . '<br> Ultima ordem: ' . $lastOrdem;
-				// 	$msg .= '<br><span class="text-secondary"> Preço atual: ' . number_format($preco_atual, 2, '.', '') . '</span>';
-				// 	echo json_encode(compact('msg'));					
-				// endif;
-				// endif;
-
 else:
-
-	// $show = 0;
-	// $criterio = null;
-	// $ativo = null;
-	// $op = $op->updateOP($show,$ativo,$criterio);
-
-
 
 
 
@@ -536,13 +494,3 @@ header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 header("Cache-Control: no-cache, cachehack=".time());
 header("Cache-Control: no-store, must-revalidate");
 header("Cache-Control: post-check=-1, pre-check=-1", false);
-// clearstatcache();
-
-
-// header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-// header("Cache-Control: post-check=0, pre-check=0", false);
-// header("Pragma: no-cache");
-
-// ($stopCancele >= 600 && $stopCancele <= 800  && $calculoBuyStopCancele <= 50  && $tipoOrdemCancele =='buy' && is_array($cancele) && !empty($cancele))
-
-// || (!empty($tipoOrdem) && is_array($tipoOrdem) &&  $tipoDaOrdem == 'buy' && $criterioCancele != 6 && $skip == 1 ) 

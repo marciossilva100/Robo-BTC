@@ -26,7 +26,7 @@ error_reporting(0);
 		
 		  <div class="form-group">
 		    <label for="InputEmail">Email</label>  
-		    <input type="email" class="form-control" id="InputEmail" aria-describedby="email" value="marciosunico18@gmail.com">
+		    <input type="email" class="form-control" id="InputEmail" aria-describedby="email" value="">
 		    <small id="email" class="form-text text-danger msg-error" ></small>
 		  </div>
 
@@ -38,13 +38,13 @@ error_reporting(0);
 
 		  <div class="form-group">
 		    <label for="api-key">Chave da API</label>  
-		    <input type="text" class="form-control" id="api-key" aria-describedby="api-key" value="53d5d9d985a9d1c2adae7a792a18dd6a">
+		    <input type="text" class="form-control" id="api-key" aria-describedby="api-key" value="">
 		    <small id="small-api-key" class="form-text text-danger msg-error" ></small>	    
 		  </div>
 
 		  <div class="form-group">
 		    <label for="api-secret">Segredo da API</label>  
-		    <input type="text" class="form-control" id="api-secret" aria-describedby="api-secret" value="JnNPWu62taULIUcc9uxss5PQTMT0Xs19">
+		    <input type="text" class="form-control" id="api-secret" aria-describedby="api-secret" value="">
 		    <small id="small-api-secret" class="form-text text-danger msg-error" ></small>	    
 		  </div>
 

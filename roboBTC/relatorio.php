@@ -189,13 +189,6 @@ api_key = $('.api_key').val();
 				setInterval(getRelatorio,3000);
 
 
-
-
-				// function reload(){
-				//     window.location.href = 'relatorio.php';
-				// }
-				// setInterval(reload,600000);
-				// setInterval(reload,2400000);
 				 
 });
 </script>
