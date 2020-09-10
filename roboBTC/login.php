@@ -32,7 +32,7 @@ error_reporting(0);
 
 		  <div class="form-group">
 		    <label for="Password1">Senha de Acesso</label>
-		    <input type="password" class="form-control" id="Password1" value="h@cker02">
+		    <input type="password" class="form-control" id="Password1" value="">
 		    <small id="small-senha" class="form-text text-danger" ></small>
 		  </div>
 
